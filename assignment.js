@@ -1,21 +1,16 @@
 const isString = (info) => {
-  if (parseInt(info)) {
-    return false;
-  } else if (typeof info == "string") {
-    return true;
-  } else {
+  if (parseInt(info) || parseFloat(info)) {
     return false;
   }
+  return true;
 };
 
 const isEmpty = (info) => {
-  let count = info.length - 1;
   let check = 0;
-  while (count > -1) {
+  for (let count = info.length - 1; count > -1; count--) {
     if (info[count] == " ") {
       check += 1;
     }
-    count -= 1;
   }
   if (check == info.length) {
     return true;
@@ -34,7 +29,6 @@ const abbreviate = (name) => {
   const fullAbbName = `${l[0]} ${abbLastName}`;
   return fullAbbName;
 };
-console.log(abbreviate("arianne mix"));
 
 function displayAnswers() {
   const questionOne = document.getElementById("one").value;
